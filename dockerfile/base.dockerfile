@@ -50,6 +50,25 @@ RUN pip3 install gitpython
 
 RUN apt-get autoclean
 
+RUN mkdir slam && cd slam && \
+    git clone https://github.com/LeeJuCheon/ORB_SLAM3 && \
+    cd ORB_SLAM3 && python3 ./buildDeps.py --d --system
+
+RUN cd slam && cd ORB_SLAM3 && chmod +x build_thirdparty.sh && chmod +x build.sh\
+    ./build_thirdparty.sh
+
+
+RUN echo "== Install CMake Latest version == " && \
+    cd home && \
+    wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
+    tar -xvzf cmake-3.20.0.tar.gz && \
+    rm cmake-3.20.0.tar.gz && \
+    cd cmake-3.20.0 && \
+    ./bootstrap && \
+    make -j2 && \
+    make install && \
+    cmake --version && \
+    cd ~
 
 
 # ROS Package
@@ -59,26 +78,28 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 apt-get update -y && apt-get upgrade -y && \
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 && \
 apt-get install -y ros-melodic-desktop-full && \
-apt-get install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
-
-RUN apt-get install python-catkin-tools -y
+apt-get install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential && \ 
+apt-get install python-catkin-tools -y && \ 
+apt-get install libusb-dev -y && \ 
+cd root/ && echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 # DISPLAY 환경 설정
 ENV DISPLAY=host.docker.internal:0.0
 
-# RUN git clone https://github.com/yorsh87/g2o_catkin.git && \
-# cd g2o_catkin && \
-# mkdir build && \
-# cd build && \
-# cmake -DGIT_TAG=61ad5f87abf21b37fcb87d6343bab2512e58712d
+RUN echo "== Make Catkin Workspace == " && \
+    mkdir -p /root/catkin_ws/src && \
+    cd /root/catkin_ws/src && \
+    catkin_make
+
+RUN echo "== Install G2O == " && \
+    git clone https://github.com/yorsh87/g2o_catkin.git && \
+    cd /root/catkin_ws && \
+    rm -rf /root/catkin_ws/build && \
+    rm -rf /root/catkin_ws/devel && \
+    catkin build g2o_catkin -DGIT_TAG=26f775d144f3b09bc072b90b903631036a1e4107
 
 # # Qt Install
 # RUN apt-get install qt5-default && \ 
 # apt-get install libfontconfig1 -y
 
-# RUN mkdir slam && cd slam && \
-#     git clone https://github.com/LeeJuCheon/ORB_SLAM3 && \
-#     cd ORB_SLAM3 && python3 ./buildDeps.py --d --system
 
-# RUN cd slam && cd ORB_SLAM3 && chmod +x build_thirdparty.sh && chmod +x build.sh\
-#     ./build_thirdparty.sh
