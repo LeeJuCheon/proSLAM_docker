@@ -1,3 +1,16 @@
+cd home
+echo "check_certificate = off" >> ~/.wgetrc
+wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
+tar -xvzf cmake-3.20.0.tar.gz
+rm cmake-3.20.0.tar.gz
+cd cmake-3.20.0
+./bootstrap
+make -j2
+make install
+
+touch /etc/ld.so.conf.d/g2o.conf
+echo "/root/catkin_ws/devel/lib" >> /etc/ld.so.conf.d/g2o.conf
+
 echo "catkin_init_workspace"
 mkdir -p ~/catkin_ws/src 
 cd ~/catkin_ws/src 
@@ -17,5 +30,5 @@ python3 ./buildDeps.py --d --system
 chmod +x ./pull_srrg_packages.bash
 ./pull_srrg_packages.bash
 cd .. 
-catkin build srrg_proslam
 catkin build --make-args tests -- srrg_proslam
+catkin build srrg_proslam

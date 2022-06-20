@@ -14,8 +14,7 @@ git checkout ${BRANCH} && \
 git pull
 
 RUN cd ~/catkin_ws/src/proSLAM_docker && \
-ls && \ 
-chmod +x ./catkin_bash.sh & \
+chmod +x catkin_bash.sh && \
 ./catkin_bash.sh
 
 # RUN chmod +x ~/.bashrc && \ 
