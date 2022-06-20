@@ -75,6 +75,10 @@ apt-get install -y python-rosdep python-rosinstall python-rosinstall-generator p
 apt-get install python-catkin-tools -y && \ 
 apt-get install libusb-dev -y 
 
+RUN mkdir -p ~/catkin_ws/src && \
+cd ~/catkin_ws/src && \
+git clone https://github.com/LeeJuCheon/proSLAM_docker.git
+
 # CMD cd root/ && echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc && \
 # rosdep update && \
 # mkdir -p ~/catkin_ws/src && \

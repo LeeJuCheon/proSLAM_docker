@@ -7,14 +7,16 @@ RUN apt-get update -y && apt-get upgrade -y
 
 RUN useradd -m user && yes password | passwd user
 
-RUN cd slam && cd ORB_SLAM3 && \
+RUN cd ~/catkin_ws/src/proSLAM_docker && \
 git remote update && \
 git fetch --all && \
 git checkout ${BRANCH} && \
-git pull && \
+git pull
 
-RUN chmod +x catkin_bash.bash & \
-./catkin_bash.bash
+RUN cd ~/catkin_ws/src/proSLAM_docker && \
+ls && \ 
+chmod +x ./catkin_bash.sh & \
+./catkin_bash.sh
 
 # RUN chmod +x ~/.bashrc && \ 
 # ~/.bashrc -c '. /opt/ros/melodic/setup.bash; cd ~/catkin_ws/src; catkin_init_workspace'
