@@ -7,6 +7,7 @@ cd cmake-3.20.0
 ./bootstrap
 make -j2
 make install
+apt-get install -y apt-utils
 
 touch /etc/ld.so.conf.d/g2o.conf
 echo "/root/catkin_ws/devel/lib" >> /etc/ld.so.conf.d/g2o.conf
@@ -24,7 +25,6 @@ catkin build g2o_catkin
 
 echo "buildDeps.py"
 cd ~/catkin_ws/src
-git clone https://github.com/LeeJuCheon/proSLAM_docker.git
 cd proSLAM_docker
 python3 ./buildDeps.py --d --system
 chmod +x ./pull_srrg_packages.bash
