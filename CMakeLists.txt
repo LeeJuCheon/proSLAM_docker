@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(srrg_proslam)
-
+set(CMAKE_CXX_STANDARD 14)
 find_package(srrg_cmake_modules REQUIRED)
 set(CMAKE_MODULE_PATH ${srrg_cmake_modules_INCLUDE_DIRS})
 
@@ -35,7 +35,7 @@ add_definitions(-DSRRG_PROSLAM_DESCRIPTOR_SIZE_BITS=256)
 add_definitions(-DSRRG_PROSLAM_LOG_LEVEL=2)
 
 #ds enable descriptor merging in HBST (and other SRRG components) - careful for collisions with landmark merging!
-add_definitions(-DSRRG_MERGE_DESCRIPTORS)
+#add_definitions(-DSRRG_MERGE_DESCRIPTORS)
 
 #ds load Eigen library
 find_package(Eigen3 REQUIRED)
