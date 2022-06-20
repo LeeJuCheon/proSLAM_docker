@@ -7,6 +7,12 @@ RUN apt-get update -y && apt-get upgrade -y
 
 RUN useradd -m user && yes password | passwd user
 
+RUN cd slam && cd ORB_SLAM3 && \
+git remote update && \
+git fetch --all && \
+git checkout ${BRANCH} && \
+git pull && \
+
 RUN chmod +x catkin_bash.bash & \
 ./catkin_bash.bash
 
@@ -28,12 +34,7 @@ RUN chmod +x catkin_bash.bash & \
 # ./pull_srrg_packages.bash
 #catkin build --make-args tests -- srrg_proslam
 
-# RUN echo "== Start Release build == " && \
-# cd slam && cd ORB_SLAM3 && \
-# git remote update && \
-# git fetch --all && \
-# git checkout ${BRANCH} && \
-# git pull && \
+
 # git branch && \
 # git branch && \
 # mkdir build && \
