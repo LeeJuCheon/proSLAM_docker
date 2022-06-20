@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10.0)
 project(srrg_proslam)
 set(CMAKE_CXX_STANDARD 14)
 find_package(srrg_cmake_modules REQUIRED)
@@ -12,13 +12,13 @@ message("${PROJECT_NAME}|build type: '${CMAKE_BUILD_TYPE}'")
 
 #ds flags for release build
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Release" OR "${CMAKE_BUILD_TYPE}" STREQUAL "RELEASE")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -march=native -Wall -pedantic -Ofast -DNDEBUG")
-  message("${PROJECT_NAME}|adding flags for '${CMAKE_BUILD_TYPE}': '-std=c++11 -march=native -Wall -pedantic -Ofast -DNDEBUG'")
-  
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fPIC -std=c++11 -Wall -Werror -pedantic -DNDEBUG")
+  message("${PROJECT_NAME}|adding flags for '${CMAKE_BUILD_TYPE}': '-O3 -fPIC -std=c++11 -Wall -Werror -pedantic -DNDEBUG'")
+
 #ds flags for other build(s) (e.g. debug)
 else()
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -march=native -Wall -pedantic -O0 -g -fstack-check")
-  message("${PROJECT_NAME}|adding flags for '${CMAKE_BUILD_TYPE}': '-std=c++11 -march=native -Wall -pedantic -O0 -g -fstack-check'")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Werror -pedantic -O0 -g -fstack-check")
+  message("${PROJECT_NAME}|adding flags for '${CMAKE_BUILD_TYPE}': '-std=c++11 -Wall -Werror -pedantic -O0 -g -fstack-check'")
 endif()
 
 #ds enable ARM flags if applicable
@@ -208,6 +208,15 @@ catkin_package(
   ${SRRG_QT_LIBRARIES}
 )
 
+find_package(easy_profiler REQUIRED HINTS ~/catkin_ws/src/easy_profiler/install/lib/cmake/easy_profiler)
+if(${easy_profiler_FOUND})
+  message(STATUS "Found: Easy-profiler - ${easy_profiler_INCLUDE_DIRS}")
+  include_directories(~/catkin_ws/src/easy_profiler/install/include)
+  set(EASY_PROFILER_LIBS easy_profiler)
+  message(STATUS "easy_profiler: ${EASY_PROFILER_LIBS}")
+endif(${easy_profiler_FOUND})
+
 #ds set sources
+message("${PROJECT_NAME}|final flags: '${CMAKE_CXX_FLAGS}'")
 add_subdirectory(src)
 add_subdirectory(executables)
