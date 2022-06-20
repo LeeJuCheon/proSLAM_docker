@@ -31,4 +31,4 @@ chmod +x ./pull_srrg_packages.bash
 ./pull_srrg_packages.bash
 cd .. 
 catkin build --make-args tests -- srrg_proslam
-catkin build srrg_proslam
+# catkin build srrg_proslam
