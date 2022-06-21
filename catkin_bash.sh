@@ -9,6 +9,9 @@ make -j2
 make install
 apt-get install -y apt-utils
 
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc && \
+source ~/.bashrc && \
+
 touch /etc/ld.so.conf.d/g2o.conf
 echo "/root/catkin_ws/devel/lib" >> /etc/ld.so.conf.d/g2o.conf
 
