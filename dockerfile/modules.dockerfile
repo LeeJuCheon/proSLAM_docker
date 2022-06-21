@@ -13,7 +13,7 @@ git fetch --all && \
 git checkout ${BRANCH} && \
 git pull
 
-RUN apt-get purge --auto-remove cmake
+RUN apt-get -y purge --auto-remove cmake
 
 RUN cd ~/catkin_ws/src/proSLAM_docker && \
 chmod +x catkin_bash.sh && \
