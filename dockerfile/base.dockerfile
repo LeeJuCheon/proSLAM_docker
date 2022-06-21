@@ -72,7 +72,7 @@ chmod +x cmake_bash.sh && \
 ./cmake_bash.sh
 
 # ROS Package
-RUN ~/catkin_ws/src/proSLAM_docker && \
+RUN cd ~/catkin_ws/src/proSLAM_docker && \
 chmod +x ROS_bash.sh && \
 ./ROS_bash.sh
 
