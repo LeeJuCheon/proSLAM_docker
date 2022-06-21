@@ -63,16 +63,18 @@ make && \
 make install && \
 ldconfig 
 
-RUN chmod +x cmake_bash.sh && \
-./cmake_bash.sh
-
-# ROS Package
-RUN chmod +x ./ROS_bash.sh && \
-./ROS_bash.sh
-
 RUN mkdir -p ~/catkin_ws/src && \
 cd ~/catkin_ws/src && \
 git clone https://github.com/LeeJuCheon/proSLAM_docker.git
+
+RUN cd ~/catkin_ws/src/proSLAM_docker && \
+chmod +x cmake_bash.sh && \
+./cmake_bash.sh
+
+# ROS Package
+RUN ~/catkin_ws/src/proSLAM_docker && \
+chmod +x ./ROS_bash.sh && \
+./ROS_bash.sh
 
 RUN cd ~/catkin_ws/src/proSLAM_docker && \
 chmod +x catkin_bash.sh && \
