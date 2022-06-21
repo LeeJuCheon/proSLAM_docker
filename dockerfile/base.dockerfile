@@ -46,14 +46,13 @@ apt-get install -y x11-apps && \
 apt-get install x11-xserver-utils && \
 apt-get install libssl-dev -y && \
 apt-get clean
-
+ 
 RUN pip3 install pyyaml
 RUN pip3 install gitpython
 
 RUN apt-get autoclean
 
 RUN apt-get install qt5* -y
-
 
 RUN echo "Configuring and building Thirdparty/OpenSSL ..." && \
 wget https://www.openssl.org/source/openssl-1.1.1i.tar.gz && \
@@ -79,6 +78,11 @@ RUN mkdir -p ~/catkin_ws/src && \
 cd ~/catkin_ws/src && \
 git clone https://github.com/LeeJuCheon/proSLAM_docker.git
 
+# Ceres-solver 2.1.0
+
+# OpenCV 3.2.0
+
+
 # CMD cd root/ && echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc && \
 # rosdep update && \
 # mkdir -p ~/catkin_ws/src && \
@@ -99,13 +103,6 @@ git clone https://github.com/LeeJuCheon/proSLAM_docker.git
 # cd .. && \ 
 # catkin build --make-args tests -- srrg_proslam && \ 
 # catkin build srrg_proslam 
- 
-
-
-
 
 # DISPLAY 환경 설정
 ENV DISPLAY=host.docker.internal:0.0
-
-
-

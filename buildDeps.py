@@ -153,10 +153,10 @@ def install_build_packages(enable_debug):
         install_pangolin(cfg.pangolin, enable_debug)
     if cfg.eigen != "":
         install_eigen(cfg.eigen, enable_debug)
-    if cfg.opencv != "":
-        install_opencv(cfg.opencv, enable_debug)
-    if cfg.ceres != "":
-        install_ceres(cfg.ceres, enable_debug)
+    # if cfg.opencv != "":
+    #     install_opencv(cfg.opencv, enable_debug)
+    # if cfg.ceres != "":
+    #     install_ceres(cfg.ceres, enable_debug)
     if cfg.gtest != "":
         install_gtest(cfg.gtest, enable_debug)
     if cfg.easy_profiler != "":
