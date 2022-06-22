@@ -13,22 +13,22 @@ make -j2
 sudo make install
 
 
-# Download
-cd ~/
-cd ..
-CERES_VERSION="ceres-solver-2.1.0"
-CERES_ARCHIVE="$CERES_VERSION.tar.gz"
-wget http://ceres-solver.org/$CERES_ARCHIVE
-tar xfv $CERES_ARCHIVE
+# # Download
+# cd ~/
+# cd ..
+# CERES_VERSION="ceres-solver-2.1.0"
+# CERES_ARCHIVE="$CERES_VERSION.tar.gz"
+# wget http://ceres-solver.org/$CERES_ARCHIVE
+# tar xfv $CERES_ARCHIVE
 
-# Install
-cd $CERES_VERSION
-mkdir build
-cd build
-cmake ..
-cmake --build . -j2
+# # Install
+# cd $CERES_VERSION
+# mkdir build
+# cd build
+# cmake ..
+# cmake --build . -j2
 
-# cd ../../../    
+# # cd ../../../    
 
 
 
