@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 2.8.3)
 project(srrg_proslam)
 set(CMAKE_CXX_STANDARD 14)
 find_package(srrg_cmake_modules REQUIRED)
