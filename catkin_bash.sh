@@ -19,9 +19,8 @@ cd ../../../
 cd /tmp
 wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip
 wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip
-wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip 
-unzip opencv.zip
-unzip opencv_contrib.zip
+unzip opencv
+unzip opencv_contrib
 
 cd opencv-3.2.0/
 mkdir build
