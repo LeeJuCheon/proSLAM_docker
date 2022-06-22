@@ -80,7 +80,9 @@ RUN cd ~/catkin_ws/src/proSLAM_docker && \
 chmod +x catkin_bash.sh && \
 ./catkin_bash.sh
 
-
+RUN cd ~/catkin_ws/src/proSLAM_docker && \
+chmod +x modify_bash.sh && \
+./modify_bash.sh
 
 # Ceres-solver 2.1.0
 

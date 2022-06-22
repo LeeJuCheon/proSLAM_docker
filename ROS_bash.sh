@@ -11,4 +11,3 @@ apt install python-rosinstall -y
 apt install python-rosinstall-generator -y
 apt install python-wstool -y
 apt install build-essential -y
-sudo rosdep update
