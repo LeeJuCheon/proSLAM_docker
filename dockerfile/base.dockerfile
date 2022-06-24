@@ -55,14 +55,14 @@ RUN apt-get autoclean
 
 RUN apt-get install qt5* -y
 
-RUN echo "Configuring and building Thirdparty/OpenSSL ..." && \
-wget https://www.openssl.org/source/openssl-1.1.1i.tar.gz && \
-tar xvfz openssl-1.1.1i.tar.gz && \
-cd openssl-1.1.1i/ && \
-./config shared && \
-make && \
-make install && \
-ldconfig 
+# RUN echo "Configuring and building Thirdparty/OpenSSL ..." && \
+# wget https://www.openssl.org/source/openssl-1.1.1i.tar.gz && \
+# tar xvfz openssl-1.1.1i.tar.gz && \
+# cd openssl-1.1.1i/ && \
+# ./config shared && \
+# make && \
+# make install && \
+# ldconfig 
 
 RUN mkdir -p ~/catkin_ws/src && \
 cd ~/catkin_ws/src && \
@@ -73,6 +73,7 @@ git clone https://github.com/LeeJuCheon/proSLAM_docker.git
 # ./cmake_bash.sh
 
 # ROS Package
+
 RUN cd ~/catkin_ws/src/proSLAM_docker && \
 chmod +x ROS_bash.sh && \
 ./ROS_bash.sh
