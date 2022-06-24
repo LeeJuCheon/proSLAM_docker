@@ -24,7 +24,7 @@ command_line:
   option_equalize_histogram:        false
   option_recover_landmarks:         true
   option_disable_bundle_adjustment: true
-  option_save_pose_graph:           false
+  option_save_pose_graph:           true
 
 landmark:
 

@@ -29,7 +29,7 @@ build_packages:
       release:
         - "-DCMAKE_CXX_FLAGS=\"-Ofast\""
   Ceres: 
-    version_num: 2.11.0
+    version_num: 2.1.0
     cmake_flags: 
       debug: ""
       release:
