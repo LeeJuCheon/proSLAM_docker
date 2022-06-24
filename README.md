@@ -35,7 +35,17 @@ sudo apt-get install python-catkin-tools
 sudo apt-get install ninja-build
 ```
 
-4. workspace 경로에 아래의 내용 catkin build
+4. g2o 최신버전 설치
+```
+git clone https://github.com/RainerKuemmerle/g2o.git
+mkdir build
+cd build
+cmake ..
+make -j3
+sudo make install
+```
+
+5. workspace 경로에 아래의 내용 catkin build
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/yorsh87/g2o_catkin.git
