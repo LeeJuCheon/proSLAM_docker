@@ -68,7 +68,13 @@ catkin build srrg_proslam
   rosrun srrg_proslam app 00.txt -c configuration_kitti.yaml
   ```
 
-
+## Extra. Map 저장, 저장된 Map 파일 Pangolin으로 실행하는 방법
+* 영상이 끝나면 pose_graph.g2o 저장
+* 해당 파일을 Pangolin으로 실행하는 명령어
+```bash
+./plotPointCloud file_name
+# example : ./plotPointCloud pose_graph.g2o
+```
 
 ##
 ### 이 Github는 https://github.com/NamDinhRobotics/proSLAM의 내용을 기반으로 작성하였습니다.
