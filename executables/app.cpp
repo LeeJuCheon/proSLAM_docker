@@ -101,6 +101,7 @@ int32_t main(int32_t argc_, char** argv_) {
     slam_system.writeTrajectoryTUM("trajectory_tum.txt");
 
     //ds save g2o graph to disk
+    slam_system.writePoseGraphToFile("pose_graph.g2o");
     if (parameters->command_line_parameters->option_save_pose_graph) {
       slam_system.writePoseGraphToFile("pose_graph.g2o");
     }

@@ -1,5 +1,69 @@
-    
-    ProSLAM: Programmers SLAM
+# ProSLAM
+
+## Development Environment
+- OS : Ubuntu 18.04
+- Gcc : 7.5.0
+- OpenCV : 3.2.0
+- ROS : Melodic
+- Qt5 : 5.7.0
+
+## Set Up
+1. Ubuntu Package 설치
+```
+sudo apt-get install build-essential libeigen3-dev libsuitesparse-dev freeglut3-dev libqglviewer-dev libyaml-cpp-dev
+```
+
+2. ROS 설치
+```
+sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+apt install curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+apt update
+apt install ros-melodic-desktop-full -y
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+. ~/.bashrc
+apt install python-rosdep -y
+apt install python-rosinstall -y
+apt install python-rosinstall-generator -y
+apt install python-wstool -y
+apt install build-essential -y
+```
+
+3. 기타 설치
+```
+sudo apt-get install python-catkin-tools
+sudo apt-get install ninja-build
+```
+
+4. workspace 경로에 아래의 내용 catkin build
+```
+cd ~/catkin_ws/src
+git clone https://github.com/yorsh87/g2o_catkin.git
+cd ..
+catkin build g2o_catkin
+
+catkin_ws
+git clone https://github.com/LeeJuCheon/proSLAM_docker
+cd ~/catkin_ws/src
+cd proSLAM_docker
+chmod +x ./pull_srrg_packages.bash
+./pull_srrg_packages.bash
+cd .. 
+catkin build srrg_proslam
+```
+
+## RUN
+* KITTI_Sequence 00 실행 
+  ```
+  rosrun srrg_proslam app 00.txt -c configuration_kitti.yaml
+  ```
+
+
+
+##
+### 이 Github는 https://github.com/NamDinhRobotics/proSLAM의 내용을 기반으로 작성하였습니다.
+-----------------------------------
+
 
 Contributors: Dominik Schlegel, Mirco Colosi, Giorgio Grisetti <br/>
 
